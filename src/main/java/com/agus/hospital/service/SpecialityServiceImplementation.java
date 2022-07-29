@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SpecialityServiceImplementation implements SpecialityService {
@@ -57,7 +56,9 @@ public class SpecialityServiceImplementation implements SpecialityService {
     @Override
     @Transactional
     public void updateSpeciality(Long idSpeciality, String name, String physician_in_charge) {
-        Optional<Speciality> speciality = specialityRepository.findById(idSpeciality);
+        Speciality speciality = specialityRepository.findById(idSpeciality).get();
+        speciality.setName(name);
+        speciality.setPhysician_in_charge(physician_in_charge);
 
     }
 

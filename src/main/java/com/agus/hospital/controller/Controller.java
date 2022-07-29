@@ -43,7 +43,7 @@ public class Controller {
 //    }
 @PutMapping(path = "/update/{id}")
 public void updateSpeciality(
-        @PathVariable("specialtyId") Long idSpeciality,
+        @PathVariable("idSpeciality") Long idSpeciality,
         @RequestParam( required = false) String name,
         @RequestParam( required = false) String physician_in_charge
 ){service.updateSpeciality(idSpeciality,name,physician_in_charge);
