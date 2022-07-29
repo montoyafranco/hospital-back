@@ -12,11 +12,11 @@ import java.util.List;
 public class Speciality {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idSpeciality;
-    @Column(nullable = false, length = 100)
+    private Long id;
+
 
     private String name;   // max 100char  min 5
-    @Column(nullable = false, length = 45)
+
     private String physician_in_charge; // max 45 char  min 10
 
 

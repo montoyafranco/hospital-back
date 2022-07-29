@@ -40,12 +40,12 @@ public class SpecialityServiceImplementation implements SpecialityService {
 
     @Override
     public void deleteSpeciality(Speciality speciality) {
-        Speciality specialityToBeDeleted = specialityRepository.findById(speciality.getIdSpeciality()).get();
+        Speciality specialityToBeDeleted = specialityRepository.findById(speciality.getId()).get();
         if (specialityToBeDeleted.getAppointmentList().size() >= 0){
             specialityToBeDeleted.getAppointmentList().forEach(appointment -> appointmentRepository.deleteById(appointment.getId()) );
 
         }
-        specialityRepository.deleteById(speciality.getIdSpeciality());
+        specialityRepository.deleteById(speciality.getId());
     }
 
     @Override
@@ -55,8 +55,8 @@ public class SpecialityServiceImplementation implements SpecialityService {
 
     @Override
     @Transactional
-    public void updateSpeciality(Long idSpeciality, String name, String physician_in_charge) {
-        Speciality speciality = specialityRepository.findById(idSpeciality).get();
+    public void updateSpeciality(Long id, String name, String physician_in_charge) {
+        Speciality speciality = specialityRepository.findById(id).get();
         speciality.setName(name);
         speciality.setPhysician_in_charge(physician_in_charge);
 
