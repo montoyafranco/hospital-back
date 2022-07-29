@@ -7,7 +7,9 @@ import com.agus.hospital.repository.SpecialityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SpecialityServiceImplementation implements SpecialityService {
@@ -39,17 +41,53 @@ public class SpecialityServiceImplementation implements SpecialityService {
 
     @Override
     public void deleteSpeciality(Speciality speciality) {
-        Speciality specialityToBeDeleted = specialityRepository.findById(speciality.getId()).get();
+        Speciality specialityToBeDeleted = specialityRepository.findById(speciality.getIdSpeciality()).get();
         if (specialityToBeDeleted.getAppointmentList().size() >= 0){
             specialityToBeDeleted.getAppointmentList().forEach(appointment -> appointmentRepository.deleteById(appointment.getId()) );
 
         }
-        specialityRepository.deleteById(speciality.getId());
-
+        specialityRepository.deleteById(speciality.getIdSpeciality());
     }
 
     @Override
     public List<Speciality> findAllSpecialities() {
         return specialityRepository.findAll();
     }
+
+    @Override
+    @Transactional
+    public void updateSpeciality(Long idSpeciality, String name, String physician_in_charge) {
+        Optional<Speciality> speciality = specialityRepository.findById(idSpeciality);
+
+    }
+
+
+
+
+
+
+
+
+
+//        if(physicianInCharge != null) {
+//            checkSpecialtyPhysician(physicianInCharge);
+//            specialty.setPhysicianInCharge(physicianInCharge);
+//        }
+
+
+
+//    public Specialty updateSpecialty(Long specialtyId, String name, String physicianInCharge) {
+//        Specialty specialty = getSpecialty(specialtyId);
+//        if(name != null) {
+//            checkSpecialtyName(name);
+//            specialty.setName(name);
+//        }
+//
+//        if(physicianInCharge != null) {
+//            checkSpecialtyPhysician(physicianInCharge);
+//            specialty.setPhysicianInCharge(physicianInCharge);
+//        }
+//
+//        return specialty;
+//    }
 }

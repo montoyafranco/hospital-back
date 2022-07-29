@@ -2,7 +2,6 @@ package com.agus.hospital.service;
 
 import com.agus.hospital.entity.Appointment;
 import com.agus.hospital.entity.Speciality;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -17,4 +16,6 @@ public interface SpecialityService {
     void deleteSpeciality(Speciality speciality);
 
     List<Speciality> findAllSpecialities();
+
+    void updateSpeciality(Long idSpeciality, String name, String physician_in_charge);
 }

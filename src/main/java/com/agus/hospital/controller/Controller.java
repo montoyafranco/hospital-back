@@ -37,4 +37,16 @@ public class Controller {
         service.deleteAppointment(appointment);
 
     }
+//    @PutMapping("update/speciality/{id}")
+//    public  void updateSpeciality(@RequestBody Speciality speciality, @PathVariable Long id){
+//        service.updateSpeciality( speciality,id);
+//    }
+@PutMapping(path = "/update/{id}")
+public void updateSpeciality(
+        @PathVariable("specialtyId") Long idSpeciality,
+        @RequestParam( required = false) String name,
+        @RequestParam( required = false) String physician_in_charge
+){service.updateSpeciality(idSpeciality,name,physician_in_charge);
+
+}
 }
