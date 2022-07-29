@@ -62,33 +62,17 @@ public class SpecialityServiceImplementation implements SpecialityService {
 
     }
 
+    @Override
+    public void updateAppointment(Long id, String dateAppointments) {
+        Appointment appointment = appointmentRepository.findById(id).get();
+        appointment.setDateAppointments(appointment.getDateAppointments()  + " , " + dateAppointments );
+        appointment.counterAppointment();
+        appointmentRepository.save(appointment);
+
+    }
 
 
 
 
 
-
-
-
-//        if(physicianInCharge != null) {
-//            checkSpecialtyPhysician(physicianInCharge);
-//            specialty.setPhysicianInCharge(physicianInCharge);
-//        }
-
-
-
-//    public Specialty updateSpecialty(Long specialtyId, String name, String physicianInCharge) {
-//        Specialty specialty = getSpecialty(specialtyId);
-//        if(name != null) {
-//            checkSpecialtyName(name);
-//            specialty.setName(name);
-//        }
-//
-//        if(physicianInCharge != null) {
-//            checkSpecialtyPhysician(physicianInCharge);
-//            specialty.setPhysicianInCharge(physicianInCharge);
-//        }
-//
-//        return specialty;
-//    }
 }

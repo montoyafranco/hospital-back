@@ -21,6 +21,9 @@ public class Appointment {
     private String dateAppointments;
     private Long number_of_appointments = 1L;
     private Long fkSpecialityId;
+    public void counterAppointment(){
+        this.number_of_appointments ++;
+    }
 
 
 }

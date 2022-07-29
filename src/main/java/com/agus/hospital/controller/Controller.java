@@ -37,10 +37,7 @@ public class Controller {
         service.deleteAppointment(appointment);
 
     }
-//    @PutMapping("update/speciality/{id}")
-//    public  void updateSpeciality(@RequestBody Speciality speciality, @PathVariable Long id){
-//        service.updateSpeciality( speciality,id);
-//    }
+
 @PutMapping(path = "/update/{id}")
 public void updateSpeciality(
         @PathVariable("id") Long id,
@@ -49,4 +46,13 @@ public void updateSpeciality(
 ){service.updateSpeciality(id,name,physician_in_charge);
 
 }
+    @PutMapping(path = "/update/appointment/{id}")
+    public void updateAppointment(
+            @PathVariable("id") Long id ,
+            @RequestParam( required = false) String dateAppointments
+
+    ){service.updateAppointment(id,dateAppointments);
+
+    }
+
 }

@@ -18,4 +18,6 @@ public interface SpecialityService {
     List<Speciality> findAllSpecialities();
 
     void updateSpeciality(Long idSpeciality, String name, String physician_in_charge);
+
+    void updateAppointment(Long id, String dateAppointments);
 }
